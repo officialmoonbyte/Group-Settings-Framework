@@ -31,7 +31,7 @@ SOFTWARE.
 
 #endregion
 
-namespace GFS.VoidBuilds
+namespace GlobalSettingsFramework.VoidBuilds
 {
     public class ClassEdit
     {

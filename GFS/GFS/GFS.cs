@@ -1,5 +1,9 @@
-﻿using GFS.VoidBuilds;
+﻿using GlobalSettingsFramework.Logger;
+using GlobalSettingsFramework.VoidBuilds;
+using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 #region Legal stuff
 
@@ -29,13 +33,15 @@ SOFTWARE.
 
 #endregion
 
-namespace GFS
+namespace GlobalSettingsFramework
 {
     /// <summary>
     /// The GFS object
     /// </summary>
     public class GFS
     {
+        List<Setting> SettingList = new List<Setting>();
+
         //Debug version and Public version for
         //future plugin support
         public int DEBUGVERSION = 5;
@@ -106,5 +112,21 @@ namespace GFS
 
         #endregion
 
+    }
+
+    public class Setting
+    {
+        //Setting both the name and the value for the setting
+        public string Name;
+        public string Value;
+
+        /// <summary>
+        /// Used to set the Name and the Value of the setting
+        /// </summary>
+        public Setting(string name, string value)
+        {
+            Name = name;
+            Value = value;
+        }
     }
 }
