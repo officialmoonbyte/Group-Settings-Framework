@@ -40,6 +40,7 @@ namespace GlobalSettingsFramework
     /// </summary>
     public class GFS
     {
+
         List<Setting> SettingList = new List<Setting>();
 
         //Debug version and Public version for
@@ -103,7 +104,7 @@ namespace GlobalSettingsFramework
                 if (!Directory.Exists(directory)) Directory.CreateDirectory(directory);
 
                 //Check if the setting file exist
-                if (!File.Exists(settingDirectory)) File.Create(settingDirectory);
+                if (!File.Exists(settingDirectory)) File.Create(settingDirectory).Close();
 
                 //Return the setting directory
                 return settingDirectory;
