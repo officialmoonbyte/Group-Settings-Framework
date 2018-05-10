@@ -42,27 +42,37 @@ namespace GlobalSettingsFramework
     {
 
         List<Setting> SettingList = new List<Setting>();
+        public string SettingsDirectory = null;
 
-        //Debug version and Public version for
-        //future plugin support
-        public int DEBUGVERSION = 5;
-        public int PUBLICVERSION = 1000;
-
-        //Engine setting for major changes
-        public int ENGINEVERSION = 1000;
-        public int MINORENGINEVERSION = 1000;
+        public GFS(string settingsDirectory = null)
+        { SettingsDirectory = settingsDirectory; }
 
         //Read-Setting from file
-        public string ReadSetting(string SettingName) { return ClassRead.ReadSetting(SettingName, GetSettingDirectory); }
-        public string ReadSetting(string SettingName, string CustomDirectory) { return ClassRead.ReadSetting(SettingName, CustomDirectory); }
+        public string ReadSetting(string SettingName)
+        {
+            if (SettingsDirectory == null) SettingsDirectory = GetSettingDirectory;
+            return ClassRead.ReadSetting(SettingName, SettingsDirectory);
+        }
 
         //Edit-Setting from file
-        public void EditSetting(string SettingName, string SettingValue) { ClassEdit.EditSetting(SettingName, SettingValue, GetSettingDirectory); }
-        public void EditSetting(string SettingName, string SettingValue, string FileDirectory) { ClassEdit.EditSetting(SettingName, SettingValue, FileDirectory); }
+        public void EditSetting(string SettingName, string SettingValue)
+        {
+            if (SettingsDirectory == null) SettingsDirectory = GetSettingDirectory;
+            ClassEdit.EditSetting(SettingName, SettingValue, SettingsDirectory);
+        }
+
+        public void EditSetting(string SettingName, string SettingValue, string FileDirectory)
+        {
+            if (SettingsDirectory == null) SettingsDirectory = GetSettingDirectory;
+            ClassEdit.EditSetting(SettingName, SettingValue, FileDirectory);
+        }
 
         //Check-Setting from file
-        public bool CheckSetting(string SettingName) { return ClassCheck.CheckSetting(SettingName, GetSettingDirectory); }
-        public bool CheckSetting(string SettingName, string FileDirectory) { return ClassCheck.CheckSetting(SettingName, FileDirectory); }
+        public bool CheckSetting(string SettingName)
+        {
+            if (SettingsDirectory == null) SettingsDirectory = GetSettingDirectory;
+            return ClassCheck.CheckSetting(SettingName, GetSettingDirectory);
+        }
 
         #region Directory Methods
 
