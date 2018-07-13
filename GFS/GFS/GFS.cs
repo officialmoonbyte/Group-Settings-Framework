@@ -71,7 +71,7 @@ namespace GlobalSettingsFramework
         public bool CheckSetting(string SettingName)
         {
             if (SettingsDirectory == null) SettingsDirectory = GetSettingDirectory;
-            return ClassCheck.CheckSetting(SettingName, GetSettingDirectory);
+            return ClassCheck.CheckSetting(SettingName, SettingsDirectory);
         }
 
         #region Directory Methods
