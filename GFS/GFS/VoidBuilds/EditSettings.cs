@@ -50,7 +50,7 @@ namespace GlobalSettingsFramework.VoidBuilds
             if (!File.Exists(_FileDirectory)) File.Create(_FileDirectory).Close();
 
             //Check for invalid characters
-            if (_SettingName.Contains(Seperators[0]) || _SettingValue.Contains(Seperators[0]))
+            if (_SettingValue != null) if (_SettingName.Contains(Seperators[0]) || _SettingValue.Contains(Seperators[0]))
             {
                 //Error message for invalid characters
                 Console.WriteLine("[Vortex Studio] Cannot edit a setting with the charaters |:%20%:|");
